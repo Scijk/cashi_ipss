@@ -30,4 +30,11 @@ export class TransactionRepository {
       return t.type === 'income' ? balance + t.amount : balance - t.amount;
     }, 0);
   }
+
+  async getTransactionSummaries(): Promise<{ amount: number; type: string }[]> {
+    const transactions = await prisma.transaction.findMany({
+      select: { amount: true, type: true }
+    });
+    return transactions;
+  }
 }

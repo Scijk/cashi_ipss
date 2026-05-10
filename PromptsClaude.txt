@@ -48,3 +48,30 @@ puedes crear los archivos necesarios para ejecutar los endpoints en bruno? y agr
 
 6
 No permite seleccionar el ambiente, al parecer hay un error en el tipo de archivo que usa bruno
+
+7
+Puedes generar el commit y posterior push con descripción relevante de los cambios
+
+8
+El endpoint de /balance debe responder a esta lógica 
+
+### Balance general
+
+`GET /transactions/balance` debe retornar un resumen con:
+
+```json
+{
+  "totalIncome": 850000,
+  "totalExpense": 320000,
+  "balance": 530000
+}
+```
+
+- `totalIncome`: suma de todos los `amount` donde `type === "income"`
+- `totalExpense`: suma de todos los `amount` donde `type === "expense"`
+- `balance`: `totalIncome - totalExpense`
+
+> El cálculo del balance debe vivir en el controller, no en el repository. El repository solo entrega los datos — quién hace la lógica importa y se evalúa.
+
+9
+

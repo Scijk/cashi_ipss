@@ -12,8 +12,15 @@ transactionController.get('/', async (c) => {
 });
 
 transactionController.get('/balance', async (c) => {
-  const balance = await transactionRepo.getBalance();
-  return c.json({ balance });
+  const summaries = await transactionRepo.getTransactionSummaries();
+  const totalIncome = summaries
+    .filter(t => t.type === 'income')
+    .reduce((sum, t) => sum + t.amount, 0);
+  const totalExpense = summaries
+    .filter(t => t.type === 'expense')
+    .reduce((sum, t) => sum + t.amount, 0);
+  const balance = totalIncome - totalExpense;
+  return c.json({ totalIncome, totalExpense, balance });
 });
 
 transactionController.get('/:id', async (c) => {

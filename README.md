@@ -1,131 +1,131 @@
-# Cashi API
+# API de Cashi
 
-Personal finance API for Cashi startup. Built with TypeScript, Hono, Prisma, Zod, Docker, and PostgreSQL.
+API de finanzas personales para la startup Cashi. Construida con TypeScript, Hono, Prisma, Zod, Docker y PostgreSQL.
 
-## Features
+## Características
 
-- REST API for managing categories and transactions
-- N-Layer architecture: routes, controllers, repositories, schemas
-- Data validation with Zod
-- Database ORM with Prisma
-- Docker Compose for PostgreSQL database
+- API REST para gestionar categorías y transacciones
+- Arquitectura N-Layer: rutas, controladores, repositorios, esquemas
+- Validación de datos con Zod
+- ORM de base de datos con Prisma
+- Docker Compose para base de datos PostgreSQL
 
-## Tech Stack
+## Tecnologías
 
-- **TypeScript**: Type-safe JavaScript
-- **Hono**: Lightweight web framework
-- **Prisma**: Database ORM
-- **Zod**: Schema validation
-- **Docker**: Containerization
-- **PostgreSQL**: Database
+- **TypeScript**: JavaScript con tipos seguros
+- **Hono**: Framework web ligero
+- **Prisma**: ORM de base de datos
+- **Zod**: Validación de esquemas
+- **Docker**: Contenedorización
+- **PostgreSQL**: Base de datos
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 src/
-├── controllers/     # Business logic layer
-├── repositories/    # Data access layer
-├── routes/          # API routes
-├── schemas/         # Validation schemas
-└── index.ts         # Application entry point
+├── controllers/     # Capa de lógica de negocio
+├── repositories/    # Capa de acceso a datos
+├── routes/          # Rutas de la API
+├── schemas/         # Esquemas de validación
+└── index.ts         # Punto de entrada de la aplicación
 prisma/
-└── schema.prisma    # Database schema
+└── schema.prisma    # Esquema de base de datos
 ```
 
-## Installation
+## Instalación
 
-1. Clone the repository:
+1. Clona el repositorio:
    ```bash
    git clone <repository-url>
    cd cashi_ipss
    ```
 
-2. Install dependencies:
+2. Instala las dependencias:
    ```bash
    npm install
    ```
 
-3. Start the database:
+3. Inicia la base de datos:
    ```bash
    npm run docker:up
    ```
 
-4. Generate Prisma client:
+4. Genera el cliente de Prisma:
    ```bash
    npm run db:generate
    ```
 
-5. Run database migrations:
+5. Ejecuta las migraciones de base de datos:
    ```bash
    npm run db:migrate
    ```
 
-## Running the Application
+## Ejecutando la Aplicación
 
-### Development
+### Desarrollo
 ```bash
 npm run dev
 ```
 
-The API will be available at `http://localhost:3000`
+La API estará disponible en `http://localhost:3000`
 
-### Production
+### Producción
 ```bash
 npm run build
 npm start
 ```
 
-## API Endpoints
+## Endpoints de la API
 
-### Categories
-- `GET /categories` - Get all categories
-- `GET /categories/:id` - Get category by ID
-- `POST /categories` - Create new category
-- `PUT /categories/:id` - Update category
-- `DELETE /categories/:id` - Delete category
+### Categorías
+- `GET /categories` - Obtener todas las categorías
+- `GET /categories/:id` - Obtener categoría por ID
+- `POST /categories` - Crear nueva categoría
+- `PUT /categories/:id` - Actualizar categoría
+- `DELETE /categories/:id` - Eliminar categoría
 
-### Transactions
-- `GET /transactions` - Get all transactions
-- `GET /transactions/:id` - Get transaction by ID
-- `POST /transactions` - Create new transaction
-- `PUT /transactions/:id` - Update transaction
-- `DELETE /transactions/:id` - Delete transaction
-- `GET /transactions/balance` - Get account balance
+### Transacciones
+- `GET /transactions` - Obtener todas las transacciones
+- `GET /transactions/:id` - Obtener transacción por ID
+- `POST /transactions` - Crear nueva transacción
+- `PUT /transactions/:id` - Actualizar transacción
+- `DELETE /transactions/:id` - Eliminar transacción
+- `GET /transactions/balance` - Obtener resumen de balance de cuenta (totalIncome, totalExpense, balance)
 
-## Testing with Bruno
+## Pruebas con Bruno
 
-Bruno is a lightweight API testing tool. The project includes a Bruno collection with pre-configured requests for all endpoints.
+Bruno es una herramienta ligera para probar APIs. El proyecto incluye una colección de Bruno con solicitudes preconfiguradas para todos los endpoints.
 
-### Setup Bruno
+### Configurar Bruno
 
-1. Download and install Bruno from [bruno.app](https://www.usebruno.com/)
-2. Open Bruno and import the collection from `bruno/` folder in the project root
-3. Select the "local" environment (configured for `http://localhost:3000`)
+1. Descarga e instala Bruno desde [bruno.app](https://www.usebruno.com/)
+2. Abre Bruno e importa la colección desde la carpeta `bruno/` en la raíz del proyecto
+3. Selecciona el ambiente "local" (configurado para `http://localhost:3000`)
 
-### Available Requests
+### Solicitudes Disponibles
 
-The collection includes requests for:
-- **Categories**: CRUD operations (Create, Read, Update, Delete)
-- **Transactions**: CRUD operations + balance calculation
-- Sample data for testing (income/expense transactions)
+La colección incluye solicitudes para:
+- **Categorías**: Operaciones CRUD (Crear, Leer, Actualizar, Eliminar)
+- **Transacciones**: Operaciones CRUD + cálculo de balance
+- Datos de ejemplo para pruebas (ingresos/gastos)
 
-### Running Tests
+### Ejecutando Pruebas
 
-1. Start the API server: `npm run dev`
-2. Start PostgreSQL: `npm run docker:up`
-3. Open Bruno and run the requests in order (seq numbers indicate recommended order)
+1. Inicia el servidor de la API: `npm run dev`
+2. Inicia PostgreSQL: `npm run docker:up`
+3. Abre Bruno y ejecuta las solicitudes en orden (los números de secuencia indican el orden recomendado)
 
-Note: Some requests use hardcoded IDs (1, 2) for simplicity. Adjust as needed based on your data.
+Nota: Algunas solicitudes usan IDs fijos (1, 2) para simplicidad. Ajusta según sea necesario basado en tus datos.
 
-## Database
+## Base de Datos
 
-The database is managed with Docker Compose. To stop the database:
+La base de datos está gestionada con Docker Compose. Para detener la base de datos:
 
 ```bash
 npm run docker:down
 ```
 
-To view the database in Prisma Studio:
+Para ver la base de datos en Prisma Studio:
 
 ```bash
 npm run db:studio

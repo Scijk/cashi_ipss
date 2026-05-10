@@ -81,14 +81,14 @@ npm start
 - `GET /categories` - Obtener todas las categorías
 - `GET /categories/:id` - Obtener categoría por ID
 - `POST /categories` - Crear nueva categoría
-- `PUT /categories/:id` - Actualizar categoría
+- `PATCH /categories/:id` - Actualizar categoría
 - `DELETE /categories/:id` - Eliminar categoría
 
 ### Transacciones
 - `GET /transactions` - Obtener todas las transacciones
 - `GET /transactions/:id` - Obtener transacción por ID
 - `POST /transactions` - Crear nueva transacción
-- `PUT /transactions/:id` - Actualizar transacción
+- `PATCH /transactions/:id` - Actualizar transacción
 - `DELETE /transactions/:id` - Eliminar transacción
 - `GET /transactions/balance` - Obtener resumen de balance de cuenta (totalIncome, totalExpense, balance)
 

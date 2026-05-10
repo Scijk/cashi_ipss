@@ -27,7 +27,7 @@ categoryController.post('/', async (c) => {
   return c.json(category, 201);
 });
 
-categoryController.put('/:id', async (c) => {
+categoryController.patch('/:id', async (c) => {
   const id = parseInt(c.req.param('id'));
   if (isNaN(id)) return c.json({ error: 'Invalid ID' }, 400);
   const body = await c.req.json();

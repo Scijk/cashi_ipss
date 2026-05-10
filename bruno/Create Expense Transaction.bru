@@ -1,0 +1,21 @@
+meta {
+  name: Create Expense Transaction
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{base_url}}/transactions
+  body: json
+  auth: none
+}
+
+body {
+  {
+    "amount": 200,
+    "type": "expense",
+    "description": "Compra",
+    "date": "2023-05-10T00:00:00.000Z",
+    "categoryId": 1
+  }
+}

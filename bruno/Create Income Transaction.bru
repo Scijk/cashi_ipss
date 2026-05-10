@@ -1,0 +1,21 @@
+meta {
+  name: Create Income Transaction
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{base_url}}/transactions
+  body: json
+  auth: none
+}
+
+body {
+  {
+    "amount": 1000,
+    "type": "income",
+    "description": "Salario",
+    "date": "2023-05-10T00:00:00.000Z",
+    "categoryId": 2
+  }
+}

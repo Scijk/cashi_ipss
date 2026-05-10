@@ -1,0 +1,50 @@
+1
+Necesito armar un proyecto nuevo en react con hono, debe utilizar arquitectura n-layer, y base de datos postgres y docker, idealmente lo primero es crear la base de datos y generar los archivos docker compose y migrations para ir agregando por pasos
+
+## Contexto del proyecto
+
+**Cashi** es una startup que quiere lanzar una aplicación móvil de finanzas personales. Mientras el equipo de frontend construye la app, te contratan a ti (o a tu equipo) para construir el backend: una API REST que permita registrar ingresos y egresos, organizarlos por categoría, y consultar el balance general de la cuenta.
+
+El cliente no sabe nada de código — lo que le importa es que los endpoints funcionen, que los datos se guarden correctamente y que el balance siempre refleje la realidad.
+
+Este es tu primer proyecto real con arquitectura N-Layer y base de datos. La guía de estudio de la Unidad 2 tiene exactamente la estructura que se pide — úsala como referencia.
+
+---
+
+## Modelo de datos
+
+### Category
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `id` | número | Identificador único, generado automáticamente |
+| `name` | texto | Nombre de la categoría (ej: "Alimentación", "Sueldo") |
+
+### Transaction
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `id` | número | Identificador único, generado automáticamente |
+| `amount` | número | Monto de la transacción. Siempre positivo. |
+| `type` | texto | Tipo: `income` (ingreso) o `expense` (egreso) |
+| `description` | texto | Descripción opcional de la transacción |
+| `date` | fecha | Fecha de la transacción, ingresada por el usuario |
+| `categoryId` | número | Referencia a la categoría |
+
+Una transacción pertenece a una categoría. Una categoría puede tener muchas transacciones.
+
+
+2
+por qué creaste el package dist además del src? no deberían quedar todos en las rutas de src?
+
+3
+era por curisosidad, y me llama la atención ya que debería agregarse un .gitignore para que no suba ese tipo de archivos al repositorio o no?
+
+4
+validar que se ejecuta correctamente y sin errores al menos esta primera parte
+
+5
+puedes crear los archivos necesarios para ejecutar los endpoints en bruno? y agregarlos al proyecto como al readme
+
+6
+No permite seleccionar el ambiente, al parecer hay un error en el tipo de archivo que usa bruno

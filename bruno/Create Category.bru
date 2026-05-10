@@ -1,0 +1,17 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/categories
+  body: json
+  auth: none
+}
+
+body {
+  {
+    "name": "Alimentación"
+  }
+}

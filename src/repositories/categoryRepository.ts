@@ -23,4 +23,10 @@ export class CategoryRepository {
   async delete(id: number): Promise<Category> {
     return prisma.category.delete({ where: { id } });
   }
+
+  async countTransactionsByCategory(categoryId: number): Promise<number> {
+    return prisma.transaction.count({
+      where: { categoryId }
+    });
+  }
 }

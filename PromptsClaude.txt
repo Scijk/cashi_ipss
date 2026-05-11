@@ -74,4 +74,29 @@ El endpoint de /balance debe responder a esta lógica
 > El cálculo del balance debe vivir en el controller, no en el repository. El repository solo entrega los datos — quién hace la lógica importa y se evalúa.
 
 9
+Puedes modificar el README para que esté en español?
+
+10
+Puedes generar el commit y push con los nuevos cambios y su descripción
+
+11
+Puedes volver a validar que todos los endpoints estén en el proyecto y entregando lo indicado 
+
+Tabla de endpoints esperados
+Método	Ruta	Descripción
+GET	/categories	Lista todas las categorías
+GET	/categories/:id	Detalle de una categoría
+POST	/categories	Crea una categoría
+PATCH	/categories/:id	Actualiza una categoría
+DELETE	/categories/:id	Elimina una categoría
+GET	/transactions	Lista todas las transacciones
+GET	/transactions/:id	Detalle de una transacción
+POST	/transactions	Crea una transacción
+PATCH	/transactions/:id	Actualiza una transacción
+DELETE	/transactions/:id	Elimina una transacción
+GET	/transactions/balance	Retorna el balance general
+
+
+12
+Crea el commit y push con la descripción de los cambios
 

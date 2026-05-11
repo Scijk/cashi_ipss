@@ -16,6 +16,26 @@ transactionController.get('/', async (c) => {
   return c.json(transactions);
 });
 
+transactionController.get('/balance', async (c) => {
+  const summaries = await transactionRepo.getTransactionSummaries();
+  if (!summaries || summaries.length === 0) {
+    return c.json({ 
+      message: 'No transactions to calculate balance',
+      totalIncome: 0, 
+      totalExpense: 0, 
+      balance: 0 
+    }, 200);
+  }
+  const totalIncome = summaries
+    .filter(t => t.type === 'income')
+    .reduce((sum, t) => sum + t.amount, 0);
+  const totalExpense = summaries
+    .filter(t => t.type === 'expense')
+    .reduce((sum, t) => sum + t.amount, 0);
+  const balance = totalIncome - totalExpense;
+  return c.json({ totalIncome, totalExpense, balance });
+});
+
 transactionController.get('/:id', async (c) => {
   const id = parseInt(c.req.param('id'));
   if (isNaN(id)) return c.json({ error: 'Invalid ID' }, 400);
@@ -87,24 +107,4 @@ transactionController.delete('/:id', async (c) => {
   
   const deletedTransaction = await transactionRepo.delete(id);
   return c.json(deletedTransaction);
-});
-
-transactionController.get('/balance', async (c) => {
-  const summaries = await transactionRepo.getTransactionSummaries();
-  if (!summaries || summaries.length === 0) {
-    return c.json({ 
-      message: 'No transactions to calculate balance',
-      totalIncome: 0, 
-      totalExpense: 0, 
-      balance: 0 
-    }, 200);
-  }
-  const totalIncome = summaries
-    .filter(t => t.type === 'income')
-    .reduce((sum, t) => sum + t.amount, 0);
-  const totalExpense = summaries
-    .filter(t => t.type === 'expense')
-    .reduce((sum, t) => sum + t.amount, 0);
-  const balance = totalIncome - totalExpense;
-  return c.json({ totalIncome, totalExpense, balance });
 });

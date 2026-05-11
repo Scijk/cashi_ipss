@@ -100,3 +100,5 @@ GET	/transactions/balance	Retorna el balance general
 12
 Crea el commit y push con la descripción de los cambios
 
+13
+Puedes revisar el readme, que contenga toda la información para levantar el proyecto, con versiones del stack y el paso a paso, además debe indicar que se usó Claude Haiku 4.5 como agente para desarrollar y cualquier información relevante
